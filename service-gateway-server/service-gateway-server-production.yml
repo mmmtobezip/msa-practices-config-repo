@@ -1,0 +1,20 @@
+# production configuration
+logging:
+   pattern:
+      file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"
+   logback:
+      rollingpolicy:
+         file-name-pattern: "logs/${spring.application.name}.%d{yyyy-MM-dd}.%i.log.zip"
+         max-file-size: 10MB
+         max-history: 10
+   file:
+      name: logs/${spring.application.name}.log
+   level:
+      root: WARN
+
+eureka:
+   client:
+      registerWithEureka: false #등록은 안함 
+      fetchRegistry: true #서비스는 등록은함. 서비스명으로 찾기위해 
+      serviceUrl:
+         defaultZone: http://192.168.64.2:8761/eureka    
